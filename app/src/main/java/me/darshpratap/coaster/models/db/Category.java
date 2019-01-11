@@ -12,20 +12,17 @@ import static androidx.room.ForeignKey.CASCADE;
                 entity = Response.class,
                 parentColumns = "id",
                 childColumns = "res_id",
-                onDelete = CASCADE,
-                onUpdate = CASCADE
+                onDelete = CASCADE
         )
 )
 public class Category {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String category;
     private String title;
     private Double score;
     private int res_id;
 
-    public Category(String category, String title, Double score, int res_id) {
-        this.category = category;
+    public Category(String title, Double score, int res_id) {
         this.title = title;
         this.score = score;
         this.res_id = res_id;
@@ -49,9 +46,5 @@ public class Category {
 
     public int getRes_id() {
         return res_id;
-    }
-
-    public String getCategory() {
-        return category;
     }
 }

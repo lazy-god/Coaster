@@ -12,8 +12,7 @@ import static androidx.room.ForeignKey.CASCADE;
                 entity = Category.class,
                 parentColumns = "id",
                 childColumns = "cat_id",
-                onDelete = CASCADE,
-                onUpdate = CASCADE
+                onDelete = CASCADE
         )
 )
 public class Content {
@@ -25,14 +24,16 @@ public class Content {
     private String group;
     private String scoreDisplayMode;
     private Double score;
+    private int cat_id;
 
-    public Content(String title, String description, String displayValue, String group, String scoreDisplayMode, Double score) {
+    public Content(String title, String description, String displayValue, String group, String scoreDisplayMode, Double score, int cat_id) {
         this.title = title;
         this.description = description;
         this.displayValue = displayValue;
         this.group = group;
         this.scoreDisplayMode = scoreDisplayMode;
         this.score = score;
+        this.cat_id = cat_id;
     }
 
     public void setId(int id) {
@@ -65,5 +66,9 @@ public class Content {
 
     public Double getScore() {
         return score;
+    }
+
+    public int getCat_id() {
+        return cat_id;
     }
 }
