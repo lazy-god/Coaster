@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_performance"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/performance" />
+
+    <item
+        android:id="@+id/navigation_accessibility"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/accessibility" />
+
+    <item
+        android:id="@+id/navigation_best_practices"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/best_practices" />
+
+    <item
+        android:id="@+id/navigation_pwa"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/pwa" />
+
+    <item
+        android:id="@+id/navigation_seo"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/seo" />
+
+</menu>

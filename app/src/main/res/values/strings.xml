@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">Coaster</string>
     <string name="app_title">Coaster</string>
+    <string name="url_name">ENTER URL</string>
+    <string name="history_bottom_sheet_title">History</string>
+    <string name="dummy_url">https://developers.google.com</string>
+    <string name="dummy_date">Analyzed On: 12-Jan-2019</string>
+    <string name="strategy">STRATEGY</string>
+    <string name="menu_desktop">Desktop</string>
+    <string name="menu_mobile">Mobile</string>
+    <string name="analyze_site_for">Analyze Site For:</string>
+    <string name="title_activity_insight">InsightActivity</string>
+    <string name="performance">Performance</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="best_practices">Best Practices</string>
+    <string name="pwa">PWA</string>
+    <string name="seo">SEO</string>
 </resources>

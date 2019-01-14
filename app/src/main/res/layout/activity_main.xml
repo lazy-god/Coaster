@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,43 +18,74 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/white" />
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:padding="@dimen/app_padding">
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/app_padding">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/url_text_input"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/url_name"
+                android:inputType="textUri"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/analyze_site_for"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/url_text_input"
-                    android:layout_width="match_parent"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/insight_btn_desktop"
+                    style="@style/MaterialButtonStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="shit" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/app_padding"
+                    android:text="@string/menu_desktop"
+                    app:cornerRadius="56dp"
+                    app:icon="@drawable/ic_laptop" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/insight_btn_mobile"
+                    style="@style/MaterialButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/app_padding"
+                    android:text="@string/menu_mobile"
+                    app:cornerRadius="56dp"
+                    app:icon="@drawable/ic_phone_android" />
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="@dimen/app_padding"
-                android:text="@string/app_name"
-                app:cornerRadius="56dp"
-                app:icon="@drawable/ic_send_black" />
+            </LinearLayout>
 
-        </LinearLayout>
+        </FrameLayout>
 
-        <include layout="@layout/history_bottom_sheet" />
+    </LinearLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <include layout="@layout/history_bottom_sheet" />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
