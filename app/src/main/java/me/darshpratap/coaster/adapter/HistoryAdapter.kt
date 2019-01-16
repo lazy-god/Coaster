@@ -29,7 +29,7 @@ class HistoryAdapter: ListAdapter<History, HistoryAdapter.HistoryHolder>(DIFF_CA
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
-                if (listener == null && position == RecyclerView.NO_POSITION) {
+                if (listener != null && position != RecyclerView.NO_POSITION) {
                     listener?.onItemClick(getItem(position))
                 }
             }
@@ -53,7 +53,7 @@ class HistoryAdapter: ListAdapter<History, HistoryAdapter.HistoryHolder>(DIFF_CA
         fun onItemClick(history: History)
     }
 
-    private fun setOnItemClickListener(listener: OnItemClickListener) {
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         this.listener = listener
     }
 }

@@ -1,22 +1,17 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@android:color/darker_gray</item>
-        <item name="colorPrimaryDark">#161616</item>
-        <item name="colorAccent">@android:color/white</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <!-- Edit Text theme. -->
-    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">#fff</item>
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorAccent</item>
         <item name="boxStrokeWidth">2dp</item>
-    </style>
-
-    <style name="MaterialButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
-        <item name="strokeColor">#fff</item>
-        <item name="strokeWidth">2dp</item>
     </style>
 
 </resources>

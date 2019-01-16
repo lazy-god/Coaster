@@ -6,19 +6,80 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:behavior_peekHeight="200dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hbs_recycler_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:background="@android:color/white"
-        android:paddingTop="10dp"
-        tools:listitem="@layout/item_history_bottom_sheet" />
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_16">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_30">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/url_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/url_name"
+                android:inputType="textUri"
+                android:maxLines="1"
+                android:textColor="@android:color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+        android:paddingTop="@dimen/spacing_20"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content"
+        android:text="@string/analyze_site_for"/>
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_margin="@dimen/spacing_10"-->
+            <!--android:src="@drawable/ic_arrow_downward" />-->
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/insight_btn_desktop"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/menu_desktop"
+                android:layout_marginEnd="@dimen/spacing_16"
+                app:icon="@drawable/ic_laptop" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/insight_btn_mobile"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/menu_mobile"
+                android:layout_marginStart="@dimen/spacing_16"
+                app:icon="@drawable/ic_laptop" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/bottom_sheet_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -31,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_10"
-            android:src="@drawable/ic_history_black" />
+            android:src="@drawable/ic_show_chart" />
 
         <TextView
             android:layout_width="wrap_content"
