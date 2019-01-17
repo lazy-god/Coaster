@@ -5,6 +5,7 @@
     android:id="@+id/history_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:elevation="10dp"
     android:orientation="vertical"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -20,7 +21,7 @@
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_30">
+            android:layout_marginTop="@dimen/spacing_16">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/url_text_input"
@@ -56,7 +57,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/insight_btn_desktop"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                style="@style/Widget.MaterialComponents.Button.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -66,13 +67,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/insight_btn_mobile"
-                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                style="@style/Widget.MaterialComponents.Button.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/menu_mobile"
                 android:layout_marginStart="@dimen/spacing_16"
-                app:icon="@drawable/ic_laptop" />
+                app:icon="@drawable/ic_phone_android" />
 
         </LinearLayout>
 
@@ -88,7 +89,16 @@
         android:paddingTop="10dp"
         android:paddingRight="40dp">
 
+        <ProgressBar
+            android:id="@+id/loading"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/spacing_10"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+
         <ImageView
+            android:id="@+id/insight_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_10"

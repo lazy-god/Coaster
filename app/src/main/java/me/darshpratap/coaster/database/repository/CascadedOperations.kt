@@ -13,13 +13,13 @@ import me.darshpratap.coaster.models.db.History
 
 object CascadedOperations {
 
-    fun cascadedInsert(application: Application, url: String, response: ResponsePojo?) = runBlocking {
+    fun cascadedInsert(application: Application, url: String, strategy: String, response: ResponsePojo?) = runBlocking {
         val historyRepository = HistoryRepository(application)
         val categoryRepository = CategoryRepository(application)
         val contentRepository = ContentRepository(application)
 
         // insert response
-        val responseId = withContext(Dispatchers.IO) { historyRepository.insert(History(url)) }
+        val responseId = withContext(Dispatchers.IO) { historyRepository.insert(History(url, strategy)) }
         Log.d("shit", responseId.toString())
 
         // insert all categories

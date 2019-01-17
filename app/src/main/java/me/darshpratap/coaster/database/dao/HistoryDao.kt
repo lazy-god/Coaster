@@ -10,6 +10,6 @@ import me.darshpratap.coaster.models.db.History
 interface HistoryDao {
     @Insert
     fun insert(history: History): Long
-    @Query("SELECT * FROM history")
+    @Query("SELECT * FROM history ORDER BY id DESC")
     fun getAllHistory(): LiveData<List<History>>
 }

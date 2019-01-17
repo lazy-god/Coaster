@@ -5,7 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "history")
 data class History(
-        val url: String
+        val url: String,
+        val strategy: String
 ) {
-    @PrimaryKey(autoGenerate = true) var id: Int = 0
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
 }
