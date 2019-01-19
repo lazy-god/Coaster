@@ -1,20 +1,22 @@
 package me.darshpratap.coaster.adapter
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_history_bottom_sheet.view.*
 import me.darshpratap.coaster.R
-import me.darshpratap.coaster.models.db.History
+import me.darshpratap.coaster.models.db.HistoryWithCategory
 
-class HistoryAdapter: ListAdapter<History, HistoryAdapter.HistoryHolder>(DIFF_CALLBACK) {
-    private var listener: OnItemClickListener? = null
+class HistoryAdapter(val context: Context): ListAdapter<HistoryWithCategory, HistoryAdapter.HistoryHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history_bottom_sheet, parent, false)
@@ -23,8 +25,8 @@ class HistoryAdapter: ListAdapter<History, HistoryAdapter.HistoryHolder>(DIFF_CA
 
     override fun onBindViewHolder(holder: HistoryHolder, position: Int) {
         val response = getItem(position)
-        holder.itemView.url_text.text = response.url
-        if (response.strategy == "desktop") {
+        holder.itemView.url_text.text = response.history.url
+        if (response.history.strategy == "desktop") {
             holder.itemView.thumbnail_image.setImageResource(R.drawable.ic_laptop)
         } else {
             holder.itemView.thumbnail_image.setImageResource(R.drawable.ic_phone_android)
@@ -44,38 +46,46 @@ class HistoryAdapter: ListAdapter<History, HistoryAdapter.HistoryHolder>(DIFF_CA
                 holder.itemView.more.setImageResource(R.drawable.ic_arrow_drop_down_black)
             }
         }
-    }
 
-    inner class HistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        init {
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                if (listener != null && position != RecyclerView.NO_POSITION) {
-                    listener?.onItemClick(getItem(position))
-                }
+        for(category in response.categoryList) {
+            Log.d("shit C", category.title)
+            val progress = (category.score * 100).toInt()
+            when(category.title) {
+                "Performance" -> setCategory(holder.itemView.score_performance, holder.itemView.progress_performance, progress)
+                "Accessibility" -> setCategory(holder.itemView.score_accessibility, holder.itemView.progress_accessibility, progress)
+                "Best Practices" -> setCategory(holder.itemView.score_best_practices, holder.itemView.progress_best_practices, progress)
+                "Progressive Web App" -> setCategory(holder.itemView.score_pwa, holder.itemView.progress_pwa, progress)
+                "SEO" -> setCategory(holder.itemView.score_seo, holder.itemView.progress_seo, progress)
             }
         }
     }
+
+    inner class HistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     companion object {
-        private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<History>() {
-            override fun areItemsTheSame(oldItem: History, newItem: History): Boolean {
-                return oldItem.id == newItem.id
+        private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<HistoryWithCategory>() {
+            override fun areItemsTheSame(oldItem: HistoryWithCategory, newItem: HistoryWithCategory): Boolean {
+                return oldItem.history.id == newItem.history.id
             }
 
-            override fun areContentsTheSame(oldItem: History, newItem: History): Boolean {
-                return oldItem.url == newItem.url &&
-                        oldItem.strategy == newItem.strategy
+            override fun areContentsTheSame(oldItem: HistoryWithCategory, newItem: HistoryWithCategory): Boolean {
+                return oldItem.history.url == newItem.history.url &&
+                        oldItem.history.strategy == newItem.history.strategy
             }
 
         }
     }
 
-    interface OnItemClickListener {
-        fun onItemClick(history: History)
+    private fun setCategory(scoreView: TextView, progressView: ProgressBar, progress: Int) {
+        scoreView.text = String.format(context.resources.getString(R.string.score), progress.toString())
+        progressView.progress = progress
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.listener = listener
-    }
+//    interface OnItemClickListener {
+//        fun onItemClick(history: History)
+//    }
+//
+//    fun setOnItemClickListener(listener: OnItemClickListener) {
+//        this.listener = listener
+//    }
 }

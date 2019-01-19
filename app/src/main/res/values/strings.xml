@@ -18,5 +18,5 @@
     <string name="main_activity_title">History</string>
     <string name="transition_string">insight</string>
     <string name="test">two</string>
-    <string name="score">80%</string>
+    <string name="score">%1$s %%</string>
 </resources>

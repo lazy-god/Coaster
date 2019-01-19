@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/lightColorAccent"
+    android:background="@color/superLightColorAccent"
     tools:context=".activity.MainActivity">
 
     <FrameLayout
@@ -17,8 +17,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/spacing_16"
+            android:layout_margin="@dimen/spacing_10"
             android:text="@string/app_title"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/white" />
 
@@ -81,6 +82,7 @@
             android:id="@+id/hbs_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/spacing_20"
             tools:listitem="@layout/item_history_bottom_sheet" />
 
         <include layout="@layout/history_bottom_sheet" />

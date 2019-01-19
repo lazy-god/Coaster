@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import me.darshpratap.coaster.database.dao.CategoryDao
 import me.darshpratap.coaster.database.dao.ContentDao
 import me.darshpratap.coaster.database.dao.HistoryDao
+import me.darshpratap.coaster.database.dao.HistoryWithCategoryDao
 import me.darshpratap.coaster.models.db.Category
 import me.darshpratap.coaster.models.db.Content
 import me.darshpratap.coaster.models.db.History
@@ -23,6 +24,7 @@ abstract class InsightDatabase : RoomDatabase() {
     abstract fun historyDao(): HistoryDao
     abstract fun categoryDao(): CategoryDao
     abstract fun contentDao(): ContentDao
+    abstract fun historyWithCategoryDao(): HistoryWithCategoryDao
 
     companion object {
         private var instance: InsightDatabase? = null

@@ -5,11 +5,11 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import me.darshpratap.coaster.database.viewModel.ContentViewModel
 import me.darshpratap.coaster.models.api.ResponsePojo
 import me.darshpratap.coaster.models.db.Category
 import me.darshpratap.coaster.models.db.Content
 import me.darshpratap.coaster.models.db.History
+import me.darshpratap.coaster.database.dao.HistoryWithCategoryDao as HistoryWithCategoryDao
 
 object CascadedOperations {
 
