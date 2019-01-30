@@ -19,4 +19,6 @@
     <string name="transition_string">insight</string>
     <string name="test">two</string>
     <string name="score">%1$s %%</string>
+    <string name="result">Result</string>
+    <string name="url_start">https://</string>
 </resources>

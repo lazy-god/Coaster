@@ -82,7 +82,7 @@
             android:id="@+id/hbs_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/spacing_20"
+            android:layout_marginBottom="@dimen/spacing_30"
             tools:listitem="@layout/item_history_bottom_sheet" />
 
         <include layout="@layout/history_bottom_sheet" />

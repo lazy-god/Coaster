@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/tools"
     android:layout_marginStart="@dimen/spacing_10"
     android:layout_marginTop="@dimen/spacing_10"
     android:layout_marginEnd="@dimen/spacing_10"
@@ -73,165 +74,172 @@
 
         </RelativeLayout>
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
+            app:flexWrap="wrap"
+            app:alignItems="stretch"
+            app:alignContent="stretch"
+            app:justifyContent="space_around"
             android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:visibility="gone">
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/performance"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_10">
 
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/progress_performance"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:arc_text_size="@dimen/spacing_20"
+                    app:arc_suffix_text=" "
+                    android:layout_gravity="center_horizontal"
+                    app:arc_unfinished_color="@color/gray"
+                    app:arc_finished_color="@color/colorAccent"
+                    custom:arc_progress="55"/>
+
                 <TextView
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:text="@string/performance" />
 
-                <TextView
-                    android:id="@+id/score_performance"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:textAlignment="viewEnd"
-                    android:text="@string/score" />
+            </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress_performance"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_10"
-                    android:layout_toStartOf="@+id/score_performance"
-                    android:progress="80" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/accessibility"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_10">
 
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/progress_accessibility"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:arc_text_size="@dimen/spacing_20"
+                    app:arc_suffix_text=" "
+                    android:layout_gravity="center_horizontal"
+                    app:arc_unfinished_color="@color/gray"
+                    app:arc_finished_color="@color/colorAccent"
+                    custom:arc_progress="55"/>
+
                 <TextView
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:text="@string/accessibility" />
 
-                <TextView
-                    android:id="@+id/score_accessibility"
-                    android:layout_width="40dp"
-                    android:textAlignment="viewEnd"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/score" />
+            </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress_accessibility"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_10"
-                    android:layout_toStartOf="@+id/score_accessibility"
-                    android:progress="70" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/best_practices"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_10">
 
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/progress_best_practices"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:arc_text_size="@dimen/spacing_20"
+                    app:arc_suffix_text=" "
+                    android:layout_gravity="center_horizontal"
+                    app:arc_unfinished_color="@color/gray"
+                    app:arc_finished_color="@color/colorAccent"
+                    custom:arc_progress="55"/>
+
                 <TextView
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:text="@string/best_practices" />
 
-                <TextView                    
-                    android:textAlignment="viewEnd"
-                    android:id="@+id/score_best_practices"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/score" />
+            </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress_best_practices"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_10"
-                    android:layout_toStartOf="@+id/score_best_practices"
-                    android:progress="90" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/pwa"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_10">
 
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/progress_pwa"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:arc_text_size="@dimen/spacing_20"
+                    app:arc_suffix_text=" "
+                    android:layout_gravity="center_horizontal"
+                    app:arc_unfinished_color="@color/gray"
+                    app:arc_finished_color="@color/colorAccent"
+                    custom:arc_progress="55"/>
+
                 <TextView
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:text="@string/pwa" />
 
-                <TextView
-                    android:textAlignment="viewEnd"
-                    android:id="@+id/score_pwa"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/score" />
+            </LinearLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress_pwa"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_10"
-                    android:layout_toStartOf="@+id/score_pwa"
-                    android:progress="85" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/seo"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_10">
 
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/progress_seo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:arc_text_size="@dimen/spacing_20"
+                    app:arc_suffix_text=" "
+                    android:layout_gravity="center_horizontal"
+                    app:arc_unfinished_color="@color/gray"
+                    app:arc_finished_color="@color/colorAccent"
+                    custom:arc_progress="55"/>
+
                 <TextView
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
                     android:text="@string/seo" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_10">
+
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/progress_total"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:arc_text_size="@dimen/spacing_20"
+                    app:arc_suffix_text=" "
+                    android:layout_gravity="center_horizontal"
+                    app:arc_unfinished_color="@color/gray"
+                    app:arc_finished_color="@color/colorAccent"
+                    custom:arc_progress="55"/>
+
                 <TextView
-                    android:textAlignment="viewEnd"
-                    android:id="@+id/score_seo"
-                    android:layout_width="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/score" />
+                    android:text="@string/result" />
 
-                <ProgressBar
-                    android:id="@+id/progress_seo"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_10"
-                    android:layout_toStartOf="@+id/score_seo"
-                    android:progress="69" />
+            </LinearLayout>
 
-            </RelativeLayout>
-
-        </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 
         <!--<View-->
             <!--android:layout_width="match_parent"-->

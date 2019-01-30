@@ -7,9 +7,9 @@ import me.darshpratap.coaster.database.dao.HistoryWithCategoryDao
 import me.darshpratap.coaster.models.db.HistoryWithCategory as HistoryWithCategoryDB
 
 class HistoryWithCategoryRepository(val application: Application) {
-    private var historyWithCategoryDaoDao: HistoryWithCategoryDao? = InsightDatabase.getInstance(application.baseContext)?.historyWithCategoryDao()
+    private var historyWithCategoryDao: HistoryWithCategoryDao? = InsightDatabase.getInstance(application.baseContext)?.historyWithCategoryDao()
 
     fun getHistoryWithCategory(): LiveData<List<HistoryWithCategoryDB>>? {
-        return historyWithCategoryDaoDao?.getHistory()
+        return historyWithCategoryDao?.getHistory()
     }
 }

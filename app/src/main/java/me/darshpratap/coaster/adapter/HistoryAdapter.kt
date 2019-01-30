@@ -1,6 +1,7 @@
 package me.darshpratap.coaster.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +10,14 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.github.lzyzsd.circleprogress.ArcProgress
 import kotlinx.android.synthetic.main.item_history_bottom_sheet.view.*
 import me.darshpratap.coaster.R
+import me.darshpratap.coaster.activity.InsightActivity
 import me.darshpratap.coaster.models.db.HistoryWithCategory
 
 class HistoryAdapter(val context: Context): ListAdapter<HistoryWithCategory, HistoryAdapter.HistoryHolder>(DIFF_CALLBACK) {
@@ -25,39 +29,72 @@ class HistoryAdapter(val context: Context): ListAdapter<HistoryWithCategory, His
 
     override fun onBindViewHolder(holder: HistoryHolder, position: Int) {
         val response = getItem(position)
-        holder.itemView.url_text.text = response.history.url
+        val hView = holder.itemView
+        hView.url_text.text = response.history.url
         if (response.history.strategy == "desktop") {
-            holder.itemView.thumbnail_image.setImageResource(R.drawable.ic_laptop)
+            hView.thumbnail_image.setImageResource(R.drawable.ic_laptop)
         } else {
-            holder.itemView.thumbnail_image.setImageResource(R.drawable.ic_phone_android)
+            hView.thumbnail_image.setImageResource(R.drawable.ic_phone_android)
         }
 
         if(position == 0) {
-            holder.itemView.details.visibility = VISIBLE
-            holder.itemView.more.setImageResource(R.drawable.ic_arrow_drop_up_black)
+            hView.details.visibility = VISIBLE
+            hView.more.setImageResource(R.drawable.ic_arrow_drop_up_black)
         }
 
-        holder.itemView.item_history.setOnClickListener {
-            if(holder.itemView.details.visibility == GONE) {
-                holder.itemView.details.visibility = VISIBLE
-                holder.itemView.more.setImageResource(R.drawable.ic_arrow_drop_up_black)
+        hView.item_history.setOnClickListener {
+            if(hView.details.visibility == GONE) {
+                hView.details.visibility = VISIBLE
+                hView.more.setImageResource(R.drawable.ic_arrow_drop_up_black)
             } else {
-                holder.itemView.details.visibility = GONE
-                holder.itemView.more.setImageResource(R.drawable.ic_arrow_drop_down_black)
+                hView.details.visibility = GONE
+                hView.more.setImageResource(R.drawable.ic_arrow_drop_down_black)
             }
         }
 
+        var tProgress = 0
+        val intent = Intent(context, InsightActivity::class.java)
         for(category in response.categoryList) {
-            Log.d("shit C", category.title)
+            intent.putExtra("id", category.res_id)
             val progress = (category.score * 100).toInt()
+            tProgress += progress
             when(category.title) {
-                "Performance" -> setCategory(holder.itemView.score_performance, holder.itemView.progress_performance, progress)
-                "Accessibility" -> setCategory(holder.itemView.score_accessibility, holder.itemView.progress_accessibility, progress)
-                "Best Practices" -> setCategory(holder.itemView.score_best_practices, holder.itemView.progress_best_practices, progress)
-                "Progressive Web App" -> setCategory(holder.itemView.score_pwa, holder.itemView.progress_pwa, progress)
-                "SEO" -> setCategory(holder.itemView.score_seo, holder.itemView.progress_seo, progress)
+                "Performance" -> {
+                    hView.progress_performance.progress = progress
+                    hView.performance.setOnClickListener {
+                        context.startActivity(intent)
+                    }
+                }
+                "Accessibility" -> {
+                    hView.progress_accessibility.progress = progress
+                    hView.accessibility.setOnClickListener {
+                        context.startActivity(intent)
+                    }
+                }
+                "Best Practices" -> {
+                    hView.progress_best_practices.progress = progress
+                    hView.best_practices.setOnClickListener {
+                        context.startActivity(intent)
+                    }
+                }
+                "Progressive Web App" -> {
+                    hView.progress_pwa.progress = progress
+                    hView.pwa.setOnClickListener {
+                        context.startActivity(intent)
+                    }
+                }
+                "SEO" -> {
+                    hView.progress_seo.progress = progress
+                    hView.seo.setOnClickListener {
+                        context.startActivity(intent)
+                    }
+                }
             }
         }
+
+        hView.progress_total.progress = (tProgress/5)
+//        hView.progress_total.finishedStrokeColor = context.resources.getColor(R.color.colorDark)
+//        hView.progress_total.textColor = context.resources.getColor(R.color.colorDark)
     }
 
     inner class HistoryHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -74,11 +111,6 @@ class HistoryAdapter(val context: Context): ListAdapter<HistoryWithCategory, His
             }
 
         }
-    }
-
-    private fun setCategory(scoreView: TextView, progressView: ProgressBar, progress: Int) {
-        scoreView.text = String.format(context.resources.getString(R.string.score), progress.toString())
-        progressView.progress = progress
     }
 
 //    interface OnItemClickListener {
