@@ -55,37 +55,46 @@ class HistoryAdapter(val context: Context): ListAdapter<HistoryWithCategory, His
         var tProgress = 0
         val intent = Intent(context, InsightActivity::class.java)
         for(category in response.categoryList) {
-            intent.putExtra("id", category.res_id)
             val progress = (category.score * 100).toInt()
             tProgress += progress
             when(category.title) {
                 "Performance" -> {
                     hView.progress_performance.progress = progress
                     hView.performance.setOnClickListener {
+                        intent.putExtra("id", category.id)
+                        intent.putExtra("title", category.title)
                         context.startActivity(intent)
                     }
                 }
                 "Accessibility" -> {
                     hView.progress_accessibility.progress = progress
                     hView.accessibility.setOnClickListener {
+                        intent.putExtra("id", category.id)
+                        intent.putExtra("title", category.title)
                         context.startActivity(intent)
                     }
                 }
                 "Best Practices" -> {
                     hView.progress_best_practices.progress = progress
                     hView.best_practices.setOnClickListener {
+                        intent.putExtra("id", category.id)
+                        intent.putExtra("title", category.title)
                         context.startActivity(intent)
                     }
                 }
                 "Progressive Web App" -> {
                     hView.progress_pwa.progress = progress
                     hView.pwa.setOnClickListener {
+                        intent.putExtra("id", category.id)
+                        intent.putExtra("title", category.title)
                         context.startActivity(intent)
                     }
                 }
                 "SEO" -> {
                     hView.progress_seo.progress = progress
                     hView.seo.setOnClickListener {
+                        intent.putExtra("id", category.id)
+                        intent.putExtra("title", category.title)
                         context.startActivity(intent)
                     }
                 }

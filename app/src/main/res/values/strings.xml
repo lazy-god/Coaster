@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Coaster</string>
-    <string name="app_title">Coaster</string>
+    <string name="app_name">Page Insights</string>
     <string name="url_name">ENTER URL</string>
     <string name="history_bottom_sheet_title">Insight</string>
     <string name="dummy_url">https://developers.google.com</string>
@@ -18,7 +17,9 @@
     <string name="main_activity_title">History</string>
     <string name="transition_string">insight</string>
     <string name="test">two</string>
-    <string name="score">%1$s %%</string>
+    <!--<string name="score">%1$s %%</string>-->
+    <string name="score">Score: %1$s</string>
     <string name="result">Result</string>
     <string name="url_start">https://</string>
+    <string name="description">description</string>
 </resources>

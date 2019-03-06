@@ -11,4 +11,8 @@ class ContentViewModel(application: Application): AndroidViewModel(application) 
     fun insert(content: Content) {
         contentRepository.insert(content)
     }
+
+    fun getContentsForCategory(id: Int): List<Content>? {
+        return contentRepository.getContentsForCategory(id)
+    }
 }

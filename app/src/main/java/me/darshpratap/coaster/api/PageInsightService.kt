@@ -17,7 +17,7 @@ object PageInsightService {
                     .build()
 
             val retrofit: Retrofit = Retrofit.Builder()
-                    .baseUrl("https://coaster-backend.appspot.com/")
+                    .baseUrl("https://coaster-backend.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(okHttpClient)
                     .build()

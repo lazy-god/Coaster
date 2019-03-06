@@ -1,43 +1,26 @@
 package me.darshpratap.coaster.activity
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_insight.*
 import me.darshpratap.coaster.R
+import me.darshpratap.coaster.adapter.ContentAdapter
+import me.darshpratap.coaster.database.repository.ContentRepository
 
 class InsightActivity : AppCompatActivity() {
-
-//    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//        when (item.itemId) {
-//            R.id.navigation_performance -> {
-//                message.setText(R.string.performance)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.navigation_accessibility -> {
-//                message.setText(R.string.accessibility)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.navigation_best_practices -> {
-//                message.setText(R.string.best_practices)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.navigation_pwa -> {
-//                message.setText(R.string.pwa)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.navigation_seo -> {
-//                message.setText(R.string.seo)
-//                return@OnNavigationItemSelectedListener true
-//            }
-//        }
-//        false
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insight)
 
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        val id = intent.getIntExtra("id", 1)
+        val title = intent.getStringExtra("title")
+        heading.text = title
+        val contents = ContentRepository(application).getContentsForCategory(id)
+
+        val adapter = ContentAdapter(this, contents)
+        content_view.layoutManager = LinearLayoutManager(this)
+        content_view.adapter = adapter
     }
 }
